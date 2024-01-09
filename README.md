@@ -1,4 +1,4 @@
-
+README.md
 # Тесты для сайта stellarburgers
 ## __URL__: https://stellarburgers.nomoreparties.site/
  
@@ -25,4 +25,4 @@
 
 > *build*:
 > - pip install -r requirements.txt
-> - pytest tests# Sprint_5
+> - pytest tests

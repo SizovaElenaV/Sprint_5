@@ -27,7 +27,7 @@ class TestChromeLogin:
 
         return chrome_driver.current_url
 
-    def test_login_chrome_driver_correct_login_to_account(self, chrome_driver):
+    def test_login_correct_login_to_account(self, chrome_driver):
         chrome_driver.get("https://stellarburgers.nomoreparties.site")
         chrome_driver.find_element(By.XPATH,
                                    "//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx "
@@ -41,7 +41,7 @@ class TestChromeLogin:
             'было перехода по кнопке "Войти в аккаунт'
         assert self.after_login_url == 'https://stellarburgers.nomoreparties.site/', 'Не удалось войти'
 
-    def test_login_chrome_driver_correct_personal_account(self, chrome_driver):
+    def test_login_correct_login_personal_account(self, chrome_driver):
         chrome_driver.get("https://stellarburgers.nomoreparties.site")
         chrome_driver.find_element(By.XPATH,
                                    "//a[@href='/account']").click()
@@ -53,7 +53,7 @@ class TestChromeLogin:
             'Не было перехода по кнопке "Личный Кабинет" '
         assert self.after_login_url == 'https://stellarburgers.nomoreparties.site/', 'Не удалось войти'
 
-    def test_login_chrome_driver_correct_login_in_register(self, chrome_driver):
+    def test_login_correct_login_in_register(self, chrome_driver):
         chrome_driver.get("https://stellarburgers.nomoreparties.site/register")
         chrome_driver.find_element(By.XPATH,
                                    "//a[@href='/login']").click()
@@ -65,7 +65,7 @@ class TestChromeLogin:
             'Не было перехода по кнопке "Войти" в форме регистрации'
         assert self.after_login_url == 'https://stellarburgers.nomoreparties.site/', 'Не удалось войти'
 
-    def test_login_chrome_driver_correct_login_in_forgot_password(self, chrome_driver):
+    def test_login_correct_login_in_forgot_password(self, chrome_driver):
         chrome_driver.get("https://stellarburgers.nomoreparties.site/forgot-password")
         chrome_driver.find_element(By.XPATH,
                                    "//a[@href='/login']").click()

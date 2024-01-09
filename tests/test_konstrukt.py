@@ -4,8 +4,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class TestChromeKonstrukt:
-
-    def test_konstrukt_chrome_driver_sauce_scroll(self, chromedriver_bulka_sauce_nachinka):
+    """
+    При корректном скролле элементов класс объектов (булка, начинка или совус) принимает значение,
+    равное 'tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect', на этом и построен этот тест
+    """
+    def test_konstrukt_correct_sauce_scroll(self, chromedriver_bulka_sauce_nachinka):
         chrome_driver, bulka, sauce, nachinka = chromedriver_bulka_sauce_nachinka
 
         sauce.click()
@@ -16,7 +19,7 @@ class TestChromeKonstrukt:
 
         assert sauce_class == 'tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect'
 
-    def test_konstrukt_chrome_driver_nachinka_scroll(self, chromedriver_bulka_sauce_nachinka):
+    def test_konstrukt_correct_nachinka_scroll(self, chromedriver_bulka_sauce_nachinka):
         chrome_driver, bulka, sauce, nachinka = chromedriver_bulka_sauce_nachinka
 
         nachinka.click()
@@ -27,7 +30,11 @@ class TestChromeKonstrukt:
 
         assert nachinka_class == 'tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect'
 
-    def test_konstrukt_chrome_driver_bulka_scroll(self, chromedriver_bulka_sauce_nachinka):
+    def test_konstrukt_correct_bulka_scroll(self, chromedriver_bulka_sauce_nachinka):
+        """
+        Чтобы проверить как работает скролл для булочки, нужно сначала проскроллить до других объектов,
+        потом уже прожимать кнопку булочка и проверять, успешен ли скролл
+        """
         chrome_driver, bulka, sauce, nachinka = chromedriver_bulka_sauce_nachinka
 
         nachinka.click()

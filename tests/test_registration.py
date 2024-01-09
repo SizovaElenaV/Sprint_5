@@ -18,7 +18,7 @@ class TestChromeRegistration:
         return self._random_char(char_num)
 
     # todo переход на регистрацию
-    def test_registration_chrome_driver_correct_registration(self, chromedriver_name_mail_pass_fields):
+    def test_registration_correct_registration(self, chromedriver_name_mail_pass_fields):
         chrome_driver, name_field, mail_field, pass_field = chromedriver_name_mail_pass_fields
         name_field.send_keys('name')
         mail_field.send_keys(self.random_email(7))
@@ -34,7 +34,7 @@ class TestChromeRegistration:
         chrome_driver.quit()
         assert chrome_driver_current_url == 'https://stellarburgers.nomoreparties.site/login', 'Нет Редиректа'
 
-    def test_registration_chrome_driver_wrong_password(self, chromedriver_name_mail_pass_fields):
+    def test_registration_wrong_password_valid_page_check(self, chromedriver_name_mail_pass_fields):
         chrome_driver, name_field, mail_field, pass_field = chromedriver_name_mail_pass_fields
         name_field.send_keys('name')
         mail_field.send_keys(self.random_email(7))
