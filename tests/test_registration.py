@@ -5,6 +5,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 import random
 import string
 
+from tests.locators import TestRegistrationLocators
+
 
 class TestChromeRegistration:
 
@@ -23,15 +25,13 @@ class TestChromeRegistration:
         name_field.send_keys('name')
         mail_field.send_keys(self.random_email(7))
         pass_field.send_keys(self.random_password(7))
-        chrome_driver.find_element(By.XPATH, "//button[@class='button_button__33qZ0 "
-                                             "button_button_type_primary__1O7Bx "
-                                             "button_button_size_medium__3zxIa']").click()
+        chrome_driver.find_element(*TestRegistrationLocators.LOCATOR_REGISTRATION_PAGE_BUTTON).click()
 
         WebDriverWait(chrome_driver, 5).until(
             expected_conditions.url_to_be('https://stellarburgers.nomoreparties.site/login'))
         chrome_driver_current_url = chrome_driver.current_url
 
-        chrome_driver.quit()
+        # chrome_driver.quit()
         assert chrome_driver_current_url == 'https://stellarburgers.nomoreparties.site/login', 'Нет Редиректа'
 
     def test_registration_wrong_password_valid_page_check(self, chromedriver_name_mail_pass_fields):
@@ -39,12 +39,10 @@ class TestChromeRegistration:
         name_field.send_keys('name')
         mail_field.send_keys(self.random_email(7))
         pass_field.send_keys(self.random_password(3))
-        chrome_driver.find_element(By.XPATH, "//button[@class='button_button__33qZ0 "
-                                             "button_button_type_primary__1O7Bx "
-                                             "button_button_size_medium__3zxIa']").click()
+        chrome_driver.find_element(*TestRegistrationLocators.LOCATOR_REGISTRATION_PAGE_BUTTON).click()
 
         chrome_driver_page_source = chrome_driver.page_source
-        chrome_driver.quit()
+        # chrome_driver.quit()
         assert "Некорректный пароль" in chrome_driver_page_source, 'Некорректный пароль'
 
 
